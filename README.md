@@ -1,8 +1,10 @@
 # Data & Model Reliability Guardian (DMRG)
 
-**Always Watching, Always Alert**
+A prototype data-quality and model-health validation pipeline that flags unreliable data before it reaches a machine-learning model, and monitors deployed models for drift, fairness issues and exposed personal data.
 
-An enterprise-grade data quality monitoring and validation system that continuously watches over organizational data and ML models, ensuring they remain accurate, timely, fair, and trustworthy.
+**Why it exists.** A model's guarantees, whether accuracy, calibration or coverage, assume the data it sees are what the model expects. Missing values, out-of-range entries, outliers, duplicates and silent schema changes break that assumption long before anyone notices a drop in performance. DMRG checks for these problems in tiers and reports them in plain language.
+
+**Status.** Built by one developer in January 2026 as a working prototype. The README and the [presentation](DMRG_Presentation.md) describe only the features that run; it has not been deployed in production.
 
 ---
 
@@ -65,8 +67,8 @@ DMRG is a comprehensive data validation platform that implements a **Three-Tier 
 
 ```bash
 # Clone the repository
-git clone https://github.com/AlishbaFatima12/ai_data_and_model_reliabiity_guardian.git
-cd ai_data_and_model_reliabiity_guardian
+git clone https://github.com/AlishbaFatima12/ai_data_and_model_reliability_guardian.git
+cd ai_data_and_model_reliability_guardian
 
 # Install dependencies
 pip install -r requirements.txt
@@ -173,14 +175,9 @@ GOLD TIER FINDINGS:
 
 ---
 
-## Compliance Support
+## Checks relevant to data-protection rules
 
-DMRG helps with regulatory compliance:
-- **GDPR** - Data lineage, processing records
-- **CCPA** - Data inventory, access tracking
-- **COPPA** - Minor data handling
-- **SOX** - Financial data controls
-- **HIPAA** - PHI access monitoring
+Some checks are designed with data-protection rules in mind (for example GDPR, CCPA, COPPA and HIPAA): PII detection, handling of records about minors, and exportable reports. These are aids for review, not a compliance certification.
 
 ---
 
@@ -205,16 +202,20 @@ DMRG helps with regulatory compliance:
 
 ---
 
+## Limitations
+
+- Prototype: tested on sample CSV files, not on production data streams.
+- Outlier detection uses z-scores, which assume roughly normal data; robust or distribution-free methods would be a natural next step.
+- Fairness and drift checks are heuristics for flagging cases to review, not statistical guarantees.
+
+---
+
 ## License
 
-This project is proprietary software.
+All rights reserved. The code is public so that it can be read and evaluated; please contact the author before reusing it.
 
 ---
 
 ## Author
 
-**DMRG Development Team**
-
----
-
-*"Catch data problems before they cause harm"*
+**Syeda Alishba Fatima** (sole developer) · [GitHub](https://github.com/AlishbaFatima12) · ORCID [0009-0007-7901-3224](https://orcid.org/0009-0007-7901-3224)
